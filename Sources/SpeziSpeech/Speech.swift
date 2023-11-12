@@ -38,5 +38,5 @@ import Spezi
 @Observable
 public class Speech: Module, DefaultInitializable {
     /// Creates an instance of a ``Speech`` component.
-    required public init() { }
+    public required init() { }
 }
