@@ -18,22 +18,42 @@ on:
 jobs:
   packageios:
     name: Build and Test Swift Package iOS
-    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
-      runsonlabels: '["macOS", "self-hosted"]'
-      scheme: SpeziSpeech
+      scheme: SpeziSpeech-Package
+      xcodeversion: 15.0
       artifactname: SpeziSpeech.xcresult
   ios:
     name: Build and Test iOS
-    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
-      runsonlabels: '["macOS", "self-hosted"]'
       path: 'Tests/UITests'
       scheme: TestApp
+      xcodeversion: 15.0
       artifactname: TestApp.xcresult
+  ipados:
+    name: Build and Test iPadOS
+    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    with:
+      path: 'Tests/UITests'
+      scheme: TestApp
+      xcodeversion: 15.0
+      resultBundle: TestAppiPadOS.xcresult
+      destination: 'platform=iOS Simulator,name=iPad mini (6th generation)'
+      artifactname: TestAppiPadOS.xcresult
+  codeql:
+    name: CodeQL
+    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    with:
+      codeql: true
+      scheme: SpeziSpeech-Package
+      xcodeversion: 15.0
+    permissions:
+      security-events: write
+      actions: read
   uploadcoveragereport:
     name: Upload Coverage Report
-    needs: [packageios, ios]
-    uses: StanfordSpezi/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
+    needs: [packageios, ios, ipados]
+    uses: StanfordBDHG/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
-      coveragereports: SpeziSpeech.xcresult TestApp.xcresult
+      coveragereports: SpeziSpeech.xcresult TestApp.xcresult TestAppiPadOS.xcresult
