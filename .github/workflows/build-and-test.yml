@@ -18,23 +18,26 @@ on:
 jobs:
   packageios:
     name: Build and Test Swift Package iOS
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
+      runsonlabels: '["macOS", "self-hosted"]'
       scheme: SpeziSpeech-Package
       xcodeversion: 15.0
       artifactname: SpeziSpeech.xcresult
   ios:
     name: Build and Test iOS
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
+      runsonlabels: '["macOS", "self-hosted"]'
       path: 'Tests/UITests'
       scheme: TestApp
       xcodeversion: 15.0
       artifactname: TestApp.xcresult
   ipados:
     name: Build and Test iPadOS
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
+      runsonlabels: '["macOS", "self-hosted"]'
       path: 'Tests/UITests'
       scheme: TestApp
       xcodeversion: 15.0
@@ -43,8 +46,9 @@ jobs:
       artifactname: TestAppiPadOS.xcresult
   codeql:
     name: CodeQL
-    uses: StanfordBDHG/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
+    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
     with:
+      runsonlabels: '["macOS", "self-hosted"]'
       codeql: true
       scheme: SpeziSpeech-Package
       xcodeversion: 15.0
@@ -54,6 +58,6 @@ jobs:
   uploadcoveragereport:
     name: Upload Coverage Report
     needs: [packageios, ios, ipados]
-    uses: StanfordBDHG/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
+    uses: StanfordSpezi/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
       coveragereports: SpeziSpeech.xcresult TestApp.xcresult TestAppiPadOS.xcresult

@@ -65,7 +65,7 @@ public class SpeechSynthesizer: NSObject, Module, DefaultInitializable, Environm
     public private(set) var isPaused = false
     
     
-    public required override init() {
+    override public required init() {
         super.init()
         avSpeechSynthesizer.delegate = self
     }

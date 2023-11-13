@@ -79,7 +79,7 @@ public class SpeechRecognizer: NSObject, Module, DefaultInitializable, Environme
     
     
     /// Initializes a new instance of `SpeechRecognizer`.
-    public required override convenience init() {
+    override public required convenience init() {
         self.init(locale: .current)
     }
     
