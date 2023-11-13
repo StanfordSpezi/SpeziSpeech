@@ -14,7 +14,7 @@ Provides speech-to-text capabilities via Apple's `Speech` framework.
 
 ## Overview
 
-The Spezi `SpeechRecognizer` encapsulates the functionality of Apple's `Speech` framework, more specifically the `SFSpeechRecognizer`.
+The Spezi ``SpeechRecognizer` encapsulates the functionality of Apple's `Speech` framework, more specifically the `SFSpeechRecognizer`.
 It provides methods to start and stop voice recognition, and publishes the state of recognition and its availability.
 
 ## Setup
@@ -27,7 +27,7 @@ You need to add the SpeziSpeech Swift package to
 
 > Important: If your application is not yet configured to use Spezi, follow the [Spezi setup article](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/initial-setup) setup the core Spezi infrastructure.
 
-### 2. Configure the ``SpeechRecognizer`` in the Spezi `Configuration`
+### 2. Configure the `SpeechRecognizer` in the Spezi `Configuration`
 
 The module needs to be registered in a Spezi-based application using the [`configuration`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate/configuration)
 in a [`SpeziAppDelegate`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate):
