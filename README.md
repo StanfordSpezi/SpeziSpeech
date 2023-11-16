@@ -13,13 +13,16 @@ SPDX-License-Identifier: MIT
 [![Build and Test](https://github.com/StanfordSpezi/SpeziSpeech/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/StanfordSpezi/SpeziSpeech/actions/workflows/build-and-test.yml)
 [![codecov](https://codecov.io/gh/StanfordSpezi/SpeziSpeech/graph/badge.svg?token=ufmRQvE0Cs)](https://codecov.io/gh/StanfordSpezi/SpeziSpeech)
 
+
 Recognize and synthesize natural language speech.
+
 
 ## Overview
 
 The Spezi Speech component provides an easy and convenient way to recognize (speech-to-text) and synthesize (text-to-speech) natural language content, facilitating seamless interaction with an application. It builds on top of Apple's [Speech](https://developer.apple.com/documentation/speech/) and [AVFoundation](https://developer.apple.com/documentation/avfoundation/) frameworks.
 
 ## Setup
+
 
 ### 1. Add Spezi Speech as a Dependency
 
@@ -45,6 +48,7 @@ class ExampleAppDelegate: SpeziAppDelegate {
     }
 }
 ```
+
 > [!NOTE] 
 > You can learn more about a [`Module` in the Spezi documentation](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/module).
 
@@ -125,12 +129,10 @@ struct SpeechTestView: View {
 
 For more information, please refer to the [API documentation](https://swiftpackageindex.com/StanfordSpezi/SpeziSpeech/documentation).
 
+
 ## Contributing
 
-
 Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/StanfordSpezi/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/StanfordSpezi/.github/blob/main/CODE_OF_CONDUCT.md) first.
-
-
 
 
 ## License
