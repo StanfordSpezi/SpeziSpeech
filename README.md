@@ -21,6 +21,7 @@ Recognize and synthesize natural language speech.
 
 The Spezi Speech component provides an easy and convenient way to recognize (speech-to-text) and synthesize (text-to-speech) natural language content, facilitating seamless interaction with an application. It builds on top of Apple's [Speech](https://developer.apple.com/documentation/speech/) and [AVFoundation](https://developer.apple.com/documentation/avfoundation/) frameworks.
 
+
 ## Setup
 
 
@@ -49,7 +50,7 @@ class ExampleAppDelegate: SpeziAppDelegate {
 }
 ```
 
-> [!NOTE] 
+> [!NOTE]  
 > You can learn more about a [`Module` in the Spezi documentation](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/module).
 
 ### 3. Configure target properties
@@ -139,7 +140,6 @@ Contributions to this project are welcome. Please make sure to read the [contrib
 
 
 This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordSpezi/SpeziSpeech/tree/main/LICENSES) for more information.
-
 
 ![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/Footer.png#gh-light-mode-only)
 ![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/Footer~dark.png#gh-dark-mode-only)
