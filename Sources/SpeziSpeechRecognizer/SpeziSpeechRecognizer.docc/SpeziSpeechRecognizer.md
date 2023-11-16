@@ -67,10 +67,15 @@ struct SpeechTestView: View {
 
 
    var body: some View {
-        // Button used to start and stop recording by triggering the `microphoneButtonPressed()` function.
-        Button("Record") {
-            microphoneButtonPressed()
-        }
+        VStack {
+             // Button used to start and stop recording by triggering the `microphoneButtonPressed()` function.
+             Button("Record") {
+                 microphoneButtonPressed()
+             }
+                 .padding(.bottom)
+
+             Text(message)
+         }
    }
 
 

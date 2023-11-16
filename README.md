@@ -12,9 +12,6 @@ SPDX-License-Identifier: MIT
 
 [![Build and Test](https://github.com/StanfordSpezi/SpeziSpeech/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/StanfordSpezi/SpeziSpeech/actions/workflows/build-and-test.yml)
 [![codecov](https://codecov.io/gh/StanfordSpezi/SpeziSpeech/graph/badge.svg?token=ufmRQvE0Cs)](https://codecov.io/gh/StanfordSpezi/SpeziSpeech)
-[![DOI](https://zenodo.org/badge/573230182.svg)](https://zenodo.org/badge/latestdoi/573230182)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordBDHG%2FSpeziSpeech%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/StanfordSpezi/SpeziSpeech)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordBDHG%2FSpeziSpeech%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/StanfordSpezi/SpeziSpeech)
 
 Recognize and synthesize natural language speech.
 
@@ -33,9 +30,9 @@ You need to add the Spezi Speech Swift package to
 > [!IMPORTANT]  
 > If your application is not yet configured to use Spezi, follow the [Spezi setup article](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/initial-setup) to setup the core Spezi infrastructure.
 
-### 2. Configure the [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechrecognizer) and the [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechsynthesizer) in the Spezi `Configuration`
+### 2. Configure the `SpeechRecognizer` and the `SpeechSynthesizer` in the Spezi `Configuration`
 
-The `SpeechRecognizer` and `SpeechSynthesizer` modules needs to be registered in a Spezi-based application using the [`configuration`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate/configuration)
+The [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechrecognizer) and [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechsynthesizer) modules need to be registered in a Spezi-based application using the [`configuration`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate/configuration)
 in a [`SpeziAppDelegate`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate):
 ```swift
 class ExampleAppDelegate: SpeziAppDelegate {
@@ -81,15 +78,17 @@ struct SpeechTestView: View {
       VStack {
          // Button used to start and stop recording by triggering the `microphoneButtonPressed()` function.
          Button("Record") {
-            microphoneButtonPressed()
+             microphoneButtonPressed()
          }
-            .padding(.bottom)
-
+             .padding(.bottom)
 
          // Button used to start and stop playback of the transcribed message by triggering the `playbackButtonPressed()` function.
          Button("Playback") {
-            playbackButtonPressed()
+             playbackButtonPressed()
          }
+             .padding(.bottom)
+         
+         Text(message)
       }
    }
 
@@ -124,17 +123,21 @@ struct SpeechTestView: View {
 }
 ```
 
+For more information, please refer to the [API documentation](https://swiftpackageindex.com/StanfordSpezi/SpeziSpeech/documentation).
+
 ## Contributing
+
 
 Contributions to this project are welcome. Please make sure to read the [contribution guidelines](https://github.com/StanfordSpezi/.github/blob/main/CONTRIBUTING.md) and the [contributor covenant code of conduct](https://github.com/StanfordSpezi/.github/blob/main/CODE_OF_CONDUCT.md) first.
 
+
+
+
 ## License
+
+
 This project is licensed under the MIT License. See [Licenses](https://github.com/StanfordSpezi/SpeziSpeech/tree/main/LICENSES) for more information.
 
 
-## Contributors
-This project is developed as part of the Stanford Byers Center for Biodesign at Stanford University.
-See [CONTRIBUTORS.md](https://github.com/StanfordSpezi/SpeziSpeech/tree/main/CONTRIBUTORS.md) for a full list of all SpeziSpeech contributors.
-
-![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/FooterLight.png#gh-light-mode-only)
-![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/FooterDark.png#gh-dark-mode-only)
+![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/Footer.png#gh-light-mode-only)
+![Spezi Footer](https://raw.githubusercontent.com/StanfordSpezi/.github/main/assets/Footer~dark.png#gh-dark-mode-only)

@@ -40,9 +40,15 @@ import Spezi
 ///     @State private var message = ""
 ///
 ///     var body: some View {
-///         Button("Record") {
-///             microphoneButtonPressed()
+///         VStack {
+///             Button("Record") {
+///                 microphoneButtonPressed()
+///             }
+///                 .padding(.bottom)
+///
+///             Text(message)
 ///         }
+///
 ///     }
 ///
 ///     private func microphoneButtonPressed() {
