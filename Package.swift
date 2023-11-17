@@ -18,25 +18,30 @@ let package = Package(
         .iOS(.v17)
     ],
     products: [
-        .library(name: "SpeziSpeech", targets: ["SpeziSpeech"])
+        .library(name: "SpeziSpeechRecognizer", targets: ["SpeziSpeechRecognizer"]),
+        .library(name: "SpeziSpeechSynthesizer", targets: ["SpeziSpeechSynthesizer"])
     ],
     dependencies: [
         .package(url: "https://github.com/StanfordSpezi/Spezi", .upToNextMinor(from: "0.8.0"))
     ],
     targets: [
         .target(
-            name: "SpeziSpeech",
+            name: "SpeziSpeechRecognizer",
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
-            ],
-            resources: [
-                .process("Resources")
+            ]
+        ),
+        .target(
+            name: "SpeziSpeechSynthesizer",
+            dependencies: [
+                .product(name: "Spezi", package: "Spezi")
             ]
         ),
         .testTarget(
             name: "SpeziSpeechTests",
             dependencies: [
-                .target(name: "SpeziSpeech")
+                .target(name: "SpeziSpeechRecognizer"),
+                .target(name: "SpeziSpeechSynthesizer")
             ]
         )
     ]
