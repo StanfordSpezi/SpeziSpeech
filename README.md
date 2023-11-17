@@ -68,7 +68,7 @@ These entries are mandatory for apps that utilize microphone and speech recognit
 
 ## Example
 
-`SpeechTestView` provides a demonstration of the capabilities of the Spezi Speech module.
+`SpeechTestView` provides a demonstration of the capabilities of Spezi Speech.
 It showcases the interaction with the [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeechrecognizer/speechrecognizer) to provide speech-to-text capabilities and the [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeechsynthesizer/speechsynthesizer) to generate speech from text.
 
 
