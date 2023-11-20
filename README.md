@@ -12,7 +12,9 @@ SPDX-License-Identifier: MIT
 
 [![Build and Test](https://github.com/StanfordSpezi/SpeziSpeech/actions/workflows/build-and-test.yml/badge.svg)](https://github.com/StanfordSpezi/SpeziSpeech/actions/workflows/build-and-test.yml)
 [![codecov](https://codecov.io/gh/StanfordSpezi/SpeziSpeech/graph/badge.svg?token=ufmRQvE0Cs)](https://codecov.io/gh/StanfordSpezi/SpeziSpeech)
-
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.10146086.svg)](https://doi.org/10.5281/zenodo.10146086)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordSpezi%2FSpeziSpeech%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/StanfordSpezi/SpeziSpeech)
+[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FStanfordSpezi%2FSpeziSpeech%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/StanfordSpezi/SpeziSpeech)
 
 Recognize and synthesize natural language speech.
 
@@ -32,11 +34,11 @@ You need to add the Spezi Speech Swift package to
 [Swift package](https://developer.apple.com/documentation/xcode/creating-a-standalone-swift-package-with-xcode#Add-a-dependency-on-another-Swift-package).
 
 > [!IMPORTANT]  
-> If your application is not yet configured to use Spezi, follow the [Spezi setup article](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/initial-setup) to setup the core Spezi infrastructure.
+> If your application is not yet configured to use Spezi, follow the [Spezi setup article](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/initial-setup) to set up the core Spezi infrastructure.
 
 ### 2. Configure the `SpeechRecognizer` and the `SpeechSynthesizer` in the Spezi `Configuration`
 
-The [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechrecognizer) and [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechsynthesizer) modules need to be registered in a Spezi-based application using the [`configuration`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate/configuration)
+The [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeechrecognizer/speechrecognizer) and [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeechsynthesizer/speechsynthesizer) modules need to be registered in a Spezi-based application using the [`configuration`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate/configuration)
 in a [`SpeziAppDelegate`](https://swiftpackageindex.com/stanfordspezi/spezi/documentation/spezi/speziappdelegate):
 ```swift
 class ExampleAppDelegate: SpeziAppDelegate {
@@ -66,8 +68,8 @@ These entries are mandatory for apps that utilize microphone and speech recognit
 
 ## Example
 
-`SpeechTestView` provides a demonstration of the capabilities of the Spezi Speech module.
-It showcases the interaction with the [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechrecognizer) to provide speech-to-text capabilities and the [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeech/speechsynthesizer) to generate speech from text.
+`SpeechTestView` provides a demonstration of the capabilities of Spezi Speech.
+It showcases the interaction with the [`SpeechRecognizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeechrecognizer/speechrecognizer) to provide speech-to-text capabilities and the [`SpeechSynthesizer`](https://swiftpackageindex.com/stanfordspezi/spezispeech/documentation/spezispeechsynthesizer/speechsynthesizer) to generate speech from text.
 
 
 ```swift
