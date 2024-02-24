@@ -6,10 +6,10 @@
 // SPDX-License-Identifier: MIT
 //
 
+import Speech
 import SpeziSpeechRecognizer
 import SpeziSpeechSynthesizer
 import SwiftUI
-import Speech
 
 
 @MainActor
