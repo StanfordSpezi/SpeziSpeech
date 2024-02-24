@@ -133,6 +133,7 @@ public class SpeechRecognizer: NSObject, Module, DefaultInitializable, Environme
                 return
             }
             
+            #if !os(macOS)
             do {
                 let audioSession = AVAudioSession.sharedInstance()
                 try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
@@ -142,6 +143,7 @@ public class SpeechRecognizer: NSObject, Module, DefaultInitializable, Environme
                 stop()
                 continuation.finish(throwing: error)
             }
+            #endif
             
             let inputNode = audioEngine.inputNode
             

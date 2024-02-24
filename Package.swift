@@ -17,6 +17,8 @@ let package = Package(
     platforms: [
         .iOS(.v17),
         .visionOS(.v1),
+        .tvOS(.v17),
+        .watchOS(.v10),
         .macOS(.v14)
     ],
     products: [
@@ -24,7 +26,8 @@ let package = Package(
         .library(name: "SpeziSpeechSynthesizer", targets: ["SpeziSpeechSynthesizer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.2.0")
+        // .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.2.0")
+        .package(url: "https://github.com/StanfordSpezi/Spezi", branch: "feat/launch-options-macos")
     ],
     targets: [
         .target(
