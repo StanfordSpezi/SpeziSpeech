@@ -41,11 +41,11 @@ jobs:
       matrix:
         include:
           - buildConfig: Debug
-            artifactname: SpeziSpeech-iOS.xcresult
-            resultBundle: SpeziSpeech-iOS.xcresult
+            artifactname: SpeziSpeech-watchOS.xcresult
+            resultBundle: SpeziSpeech-watchOS.xcresult
           - buildConfig: Release
-            artifactname: SpeziSpeech-iOS-Release.xcresult
-            resultBundle: SpeziSpeech-iOS-Release.xcresult
+            artifactname: SpeziSpeech-watchOS-Release.xcresult
+            resultBundle: SpeziSpeech-watchOS-Release.xcresult
     with:
       runsonlabels: '["macOS", "self-hosted"]'
       scheme: SpeziSpeech-Package
@@ -69,25 +69,6 @@ jobs:
       runsonlabels: '["macOS", "self-hosted"]'
       scheme: SpeziSpeech-Package
       destination: 'platform=visionOS Simulator,name=Apple Vision Pro'
-      buildConfig: ${{ matrix.buildConfig }}
-      resultBundle: ${{ matrix.resultBundle }}
-      artifactname: ${{ matrix.artifactname }}
-  buildandtest_tvos:
-    name: Build and Test Swift Package tvOS
-    uses: StanfordSpezi/.github/.github/workflows/xcodebuild-or-fastlane.yml@v2
-    strategy:
-      matrix:
-        include:
-          - buildConfig: Debug
-            artifactname: SpeziSpeech-visionOS.xcresult
-            resultBundle: SpeziSpeech-visionOS.xcresult
-          - buildConfig: Release
-            artifactname: SpeziSpeech-visionOS-Release.xcresult
-            resultBundle: SpeziSpeech-visionOS-Release.xcresult
-    with:
-      runsonlabels: '["macOS", "self-hosted"]'
-      scheme: SpeziSpeech-Package
-      destination: 'platform=tvOS Simulator,name=Apple TV 4K (3rd generation)'
       buildConfig: ${{ matrix.buildConfig }}
       resultBundle: ${{ matrix.resultBundle }}
       artifactname: ${{ matrix.artifactname }}
@@ -174,4 +155,4 @@ jobs:
     needs: [buildandtest_ios, buildandtest_visionos, buildandtest_watchos, buildandtest_macos, buildandtestuitests_ios, buildandtestuitests_ipad, buildandtestuitests_visionos]
     uses: StanfordSpezi/.github/.github/workflows/create-and-upload-coverage-report.yml@v2
     with:
-      coveragereports: 'SpeziSpeech-iOS.xcresult SpeziViews-watchOS.xcresult SpeziSpeech-visionOS.xcresult buildandtest_tvos SpeziSpeech-macOS.xcresult TestApp-iOS.xcresult TestApp-iPad.xcresult TestApp-visionOS.xcresult'
+      coveragereports: 'SpeziSpeech-iOS.xcresult SpeziViews-watchOS.xcresult SpeziSpeech-visionOS.xcresult SpeziSpeech-macOS.xcresult TestApp-iOS.xcresult TestApp-iPad.xcresult TestApp-visionOS.xcresult'

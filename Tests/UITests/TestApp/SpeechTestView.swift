@@ -26,7 +26,7 @@ struct SpeechTestView: View {
                     .padding()
             }
                 .frame(
-                    width: 500,
+                    width: 350,
                     height: 200
                 )
                 .border(.gray)
