@@ -31,12 +31,18 @@ let package = Package(
             name: "SpeziSpeechRecognizer",
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
         .target(
             name: "SpeziSpeechSynthesizer",
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
         .testTarget(
