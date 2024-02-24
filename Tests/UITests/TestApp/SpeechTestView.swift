@@ -9,8 +9,10 @@
 import SpeziSpeechRecognizer
 import SpeziSpeechSynthesizer
 import SwiftUI
+import Speech
 
 
+@MainActor
 struct SpeechTestView: View {
     @Environment(SpeechRecognizer.self) private var speechRecognizer
     @Environment(SpeechSynthesizer.self) private var speechSynthesizer
@@ -119,3 +121,6 @@ struct SpeechTestView: View {
 #Preview {
     SpeechTestView()
 }
+
+
+extension SFSpeechRecognitionResult: @unchecked Sendable {}
