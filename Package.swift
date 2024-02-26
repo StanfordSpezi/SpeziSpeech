@@ -15,26 +15,34 @@ let package = Package(
     name: "SpeziSpeech",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v17)
+        .iOS(.v17),
+        .visionOS(.v1),
+        .macOS(.v14)
     ],
     products: [
         .library(name: "SpeziSpeechRecognizer", targets: ["SpeziSpeechRecognizer"]),
         .library(name: "SpeziSpeechSynthesizer", targets: ["SpeziSpeechSynthesizer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.0.0")
+        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.2.1")
     ],
     targets: [
         .target(
             name: "SpeziSpeechRecognizer",
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
         .target(
             name: "SpeziSpeechSynthesizer",
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
+            ],
+            swiftSettings: [
+                .enableExperimentalFeature("StrictConcurrency")
             ]
         ),
         .testTarget(
