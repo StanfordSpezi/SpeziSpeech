@@ -89,6 +89,17 @@ public final class SpeechSynthesizer: NSObject, Module, DefaultInitializable, En
         speak(utterance)
     }
     
+    
+    /// Adds the text to the speech synthesizer's queue.
+    /// - Parameters:
+    ///   - text: A string that contains the text to speak.
+    ///   - voice: The `AVSpeechSynthesisVoice` to use.
+    public func speak(_ text: String, voice: AVSpeechSynthesisVoice) {
+        let utterance = AVSpeechUtterance(string: text)
+        utterance.voice = voice
+        speak(utterance)
+    }
+    
     /// Adds the utterance to the speech synthesizer’s queue.
     /// - Parameter utterance: An `AVSpeechUtterance` instance that contains text to speak.
     public func speak(_ utterance: AVSpeechUtterance) {

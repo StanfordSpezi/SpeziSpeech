@@ -16,6 +16,7 @@ import SwiftUI
 struct SpeechTestView: View {
     @Environment(SpeechRecognizer.self) private var speechRecognizer
     @Environment(SpeechSynthesizer.self) private var speechSynthesizer
+    @State private var selectedVoiceIndex = 0
     @State private var message = ""
     
     
@@ -44,6 +45,13 @@ struct SpeechTestView: View {
                 playbackButton
                     .padding()
             }
+            
+            Picker("Voice", selection: $selectedVoiceIndex) {
+                ForEach(voices.indices, id: \.self) { index in
+                    Text(voices[index].name).tag(index)
+                }
+            }
+            .padding()
         }
     }
     
@@ -112,8 +120,13 @@ struct SpeechTestView: View {
         if speechSynthesizer.isSpeaking {
             speechSynthesizer.pause()
         } else {
-            speechSynthesizer.speak(message)
+            let voice = voices[selectedVoiceIndex]
+            speechSynthesizer.speak(message, voice: voice)
         }
+    }
+    
+    private var voices: [AVSpeechSynthesisVoice] {
+        AVSpeechSynthesisVoice.speechVoices().filter({$0.language == AVSpeechSynthesisVoice.currentLanguageCode()})
     }
 }
 
