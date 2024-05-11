@@ -67,7 +67,10 @@ public final class SpeechSynthesizer: NSObject, Module, DefaultInitializable, En
     public private(set) var isSpeaking = false
     /// A Boolean value that indicates whether a speech synthesizer is in a paused state.
     public private(set) var isPaused = false
-    
+    /// An array of voices in the user's current locale
+    public var voices: [AVSpeechSynthesisVoice] {
+        AVSpeechSynthesisVoice.speechVoices().filter({$0.language == AVSpeechSynthesisVoice.currentLanguageCode()})
+    }
     
     override public required init() {
         super.init()

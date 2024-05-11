@@ -47,8 +47,8 @@ struct SpeechTestView: View {
             }
             
             Picker("Voice", selection: $selectedVoiceIndex) {
-                ForEach(voices.indices, id: \.self) { index in
-                    Text(voices[index].name).tag(index)
+                ForEach(speechSynthesizer.voices.indices, id: \.self) { index in
+                    Text(speechSynthesizer.voices[index].name).tag(index)
                 }
             }
             .padding()
@@ -120,13 +120,9 @@ struct SpeechTestView: View {
         if speechSynthesizer.isSpeaking {
             speechSynthesizer.pause()
         } else {
-            let voice = voices[selectedVoiceIndex]
+            let voice = speechSynthesizer.voices[selectedVoiceIndex]
             speechSynthesizer.speak(message, voice: voice)
         }
-    }
-    
-    private var voices: [AVSpeechSynthesisVoice] {
-        AVSpeechSynthesisVoice.speechVoices().filter({$0.language == AVSpeechSynthesisVoice.currentLanguageCode()})
     }
 }
 
