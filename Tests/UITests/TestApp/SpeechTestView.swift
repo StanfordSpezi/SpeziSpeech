@@ -48,10 +48,13 @@ struct SpeechTestView: View {
             
             Picker("Voice", selection: $selectedVoiceIndex) {
                 ForEach(speechSynthesizer.voices.indices, id: \.self) { index in
-                    Text(speechSynthesizer.voices[index].name).tag(index)
+                    Text(speechSynthesizer.voices[index].name)
+                        .tag(index)
                 }
             }
-            .padding()
+                .pickerStyle(.inline)
+                .accessibilityIdentifier("voicePicker")
+                .padding()
         }
     }
     

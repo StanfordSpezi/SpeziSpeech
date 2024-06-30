@@ -16,10 +16,21 @@ class TestAppUITests: XCTestCase {
         continueAfterFailure = false
     }
     
-    
     func testSpeziSpeech() throws {
         let app = XCUIApplication()
         app.launch()
+        
         XCTAssert(app.staticTexts["SpeziSpeech"].waitForExistence(timeout: 1))
+        
+        try app.testVoiceSelection()
+    }
+        
+}
+
+extension XCUIApplication {
+    func testVoiceSelection() throws {
+        let picker = pickers["voicePicker"]
+        let optionToSelect = picker.pickerWheels.element(boundBy: 0)
+        optionToSelect.adjust(toPickerWheelValue: "Kathy")
     }
 }
