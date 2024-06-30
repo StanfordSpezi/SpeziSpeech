@@ -67,9 +67,11 @@ public final class SpeechSynthesizer: NSObject, Module, DefaultInitializable, En
     public private(set) var isSpeaking = false
     /// A Boolean value that indicates whether a speech synthesizer is in a paused state.
     public private(set) var isPaused = false
-    /// An array of voices in the user's current locale
+    /// An Array of voices in the user's current locale.
     public var voices: [AVSpeechSynthesisVoice] {
-        AVSpeechSynthesisVoice.speechVoices().filter({$0.language == AVSpeechSynthesisVoice.currentLanguageCode()})
+        AVSpeechSynthesisVoice.speechVoices().filter({
+            $0.language == AVSpeechSynthesisVoice.currentLanguageCode()
+        })
     }
     
     override public required init() {
@@ -92,6 +94,23 @@ public final class SpeechSynthesizer: NSObject, Module, DefaultInitializable, En
         speak(utterance)
     }
     
+    /// Requests permission for and fetches any personal voices the user may have created.
+    /// - Returns: An Array of personal voices
+    public func getPersonalVoices() async -> [AVSpeechSynthesisVoice] {
+        await withCheckedContinuation { continuation in
+            AVSpeechSynthesizer.requestPersonalVoiceAuthorization { status in
+                switch status {
+                case .authorized:
+                    let personalVoices = AVSpeechSynthesisVoice.speechVoices().filter {
+                        $0.voiceTraits == .isPersonalVoice
+                    }
+                    continuation.resume(returning: personalVoices)
+                default:
+                    continuation.resume(returning: [])
+                }
+            }
+        }
+    }
     
     /// Adds the text to the speech synthesizer's queue.
     /// - Parameters:
