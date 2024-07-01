@@ -8,8 +8,15 @@
 // SPDX-License-Identifier: MIT
 //
 
+import class Foundation.ProcessInfo
 import PackageDescription
 
+
+#if swift(<6)
+let strictConcurrency: SwiftSetting = .enableExperimentalFeature("StrictConcurrency")
+#else
+let strictConcurrency: SwiftSetting = .enableUpcomingFeature("StrictConcurrency")
+#endif
 
 let package = Package(
     name: "SpeziSpeech",
@@ -25,7 +32,7 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.2.1")
-    ],
+    ] + swiftLintPackage(),
     targets: [
         .target(
             name: "SpeziSpeechRecognizer",
@@ -33,8 +40,9 @@ let package = Package(
                 .product(name: "Spezi", package: "Spezi")
             ],
             swiftSettings: [
-                .enableExperimentalFeature("StrictConcurrency")
-            ]
+                strictConcurrency
+            ],
+            plugins: [] + swiftLintPlugin()
         ),
         .target(
             name: "SpeziSpeechSynthesizer",
@@ -42,15 +50,38 @@ let package = Package(
                 .product(name: "Spezi", package: "Spezi")
             ],
             swiftSettings: [
-                .enableExperimentalFeature("StrictConcurrency")
-            ]
+                strictConcurrency
+            ],
+            plugins: [] + swiftLintPlugin()
         ),
         .testTarget(
             name: "SpeziSpeechTests",
             dependencies: [
                 .target(name: "SpeziSpeechRecognizer"),
                 .target(name: "SpeziSpeechSynthesizer")
-            ]
+            ],
+            swiftSettings: [
+                strictConcurrency
+            ],
+            plugins: [] + swiftLintPlugin()
         )
     ]
 )
+
+
+func swiftLintPlugin() -> [Target.PluginUsage] {
+    // Fully quit Xcode and open again with `open --env SPEZI_DEVELOPMENT_SWIFTLINT /Applications/Xcode.app`
+    if ProcessInfo.processInfo.environment["SPEZI_DEVELOPMENT_SWIFTLINT"] != nil {
+        [.plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")]
+    } else {
+        []
+    }
+}
+
+func swiftLintPackage() -> [PackageDescription.Package.Dependency] {
+    if ProcessInfo.processInfo.environment["SPEZI_DEVELOPMENT_SWIFTLINT"] != nil {
+        [.package(url: "https://github.com/realm/SwiftLint.git", .upToNextMinor(from: "0.55.1"))]
+    } else {
+        []
+    }
+}
