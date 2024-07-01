@@ -135,22 +135,17 @@ SpeziSpeech also supports selecting voices, including [personal voices](https://
 The following example shows how a user can be given a choice of voices in their current locale and the selected voice can be used to synthesize speech.
 
 ```swift
-import Speech
-import SpeziSpeechRecognizer
-import SpeziSpeechSynthesizer
-import SwiftUI
-
-struct SpeechVoiceSelectionTestView: View {
+struct SpeechVoiceSelectionExample: View {
    @Environment(SpeechSynthesizer.self) private var speechSynthesizer
    @State private var selectedVoiceIndex = 0
    @State private var message = ""
+
 
    var body: some View {
       VStack {
          TextField("Enter text to be spoken", text: $message)
             .textFieldStyle(RoundedBorderTextFieldStyle())
             .padding()
-
           Picker("Voice", selection: $selectedVoiceIndex) {
               ForEach(speechSynthesizer.voices.indices, id: \.self) { index in
                   Text(speechSynthesizer.voices[index].name)
@@ -160,7 +155,6 @@ struct SpeechVoiceSelectionTestView: View {
               .pickerStyle(.inline)
               .accessibilityIdentifier("voicePicker")
               .padding()
-
          Button("Speak") {
             speechSynthesizer.speak(
                 message,
@@ -168,7 +162,7 @@ struct SpeechVoiceSelectionTestView: View {
             )
          }
       }
-      .padding()
+         .padding()
    }
 }
 ```
