@@ -22,7 +22,9 @@ class TestAppUITests: XCTestCase {
         
         XCTAssertTrue(app.staticTexts["Spezi Speech Tests"].waitForExistence(timeout: 1))
         
+        #if os(iOS)
         try app.testSynthesisWithVoiceSelection()
+        #endif
     }
 }
 
