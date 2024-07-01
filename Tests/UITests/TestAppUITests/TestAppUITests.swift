@@ -32,9 +32,11 @@ class TestAppUITests: XCTestCase {
         XCTAssertTrue(voiceSelectionTestViewButton.waitForExistence(timeout: 1))
         voiceSelectionTestViewButton.tap()
         
+        #if !os(visionOS)
         let picker = app.pickers["voicePicker"]
         let optionToSelect = picker.pickerWheels.element(boundBy: 0)
         optionToSelect.adjust(toPickerWheelValue: "Kathy")
+        #endif
         
         let textField = app.textFields["Enter text to be spoken"]
         XCTAssertTrue(textField.waitForExistence(timeout: 1))
