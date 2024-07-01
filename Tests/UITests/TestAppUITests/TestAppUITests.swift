@@ -24,7 +24,6 @@ class TestAppUITests: XCTestCase {
         
         try app.testSynthesisWithVoiceSelection()
     }
-        
 }
 
 extension XCUIApplication {
