@@ -21,31 +21,28 @@ class TestAppUITests: XCTestCase {
         app.launch()
         
         XCTAssertTrue(app.staticTexts["Spezi Speech Tests"].waitForExistence(timeout: 1))
-        
-        #if os(iOS)
-        try app.testSynthesisWithVoiceSelection()
-        #endif
     }
-}
-
-extension XCUIApplication {
+    
     func testSynthesisWithVoiceSelection() throws {
-        let voiceSelectionTestViewButton = staticTexts["Speech Voice Selection Test View"]
+        let app = XCUIApplication()
+        app.launch()
+        
+        let voiceSelectionTestViewButton = app.staticTexts["Speech Voice Selection Test View"]
         
         XCTAssertTrue(voiceSelectionTestViewButton.waitForExistence(timeout: 1))
         voiceSelectionTestViewButton.tap()
         
-        let picker = pickers["voicePicker"]
+        let picker = app.pickers["voicePicker"]
         let optionToSelect = picker.pickerWheels.element(boundBy: 0)
         optionToSelect.adjust(toPickerWheelValue: "Kathy")
         
-        let textField = textFields["Enter text to be spoken"]
+        let textField = app.textFields["Enter text to be spoken"]
         XCTAssertTrue(textField.waitForExistence(timeout: 1))
         
         textField.tap()
         textField.typeText("Hello, this is a test of the Spezi Speech module.")
         
-        let speakButton = buttons["Speak"]
+        let speakButton = app.buttons["Speak"]
         XCTAssertTrue(speakButton.waitForExistence(timeout: 1))
         speakButton.tap()
         

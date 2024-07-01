@@ -17,10 +17,10 @@ struct UITestsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            NavigationView {
+            NavigationStack {
                 MenuView()
             }
-                .spezi(appDelegate)
+            .spezi(appDelegate)
         }
     }
 }
