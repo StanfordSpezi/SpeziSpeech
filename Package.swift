@@ -25,7 +25,7 @@ let package = Package(
         .library(name: "SpeziSpeechSynthesizer", targets: ["SpeziSpeechSynthesizer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.2.1")
+        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.8.0")
     ] + swiftLintPackage(),
     targets: [
         .target(
