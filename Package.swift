@@ -1,4 +1,4 @@
-// swift-tools-version:5.9
+// swift-tools-version:6.0
 
 //
 // This source file is part of the Stanford Spezi open source project
@@ -11,12 +11,6 @@
 import class Foundation.ProcessInfo
 import PackageDescription
 
-
-#if swift(<6)
-let strictConcurrency: SwiftSetting = .enableExperimentalFeature("StrictConcurrency")
-#else
-let strictConcurrency: SwiftSetting = .enableUpcomingFeature("StrictConcurrency")
-#endif
 
 let package = Package(
     name: "SpeziSpeech",
@@ -31,16 +25,13 @@ let package = Package(
         .library(name: "SpeziSpeechSynthesizer", targets: ["SpeziSpeechSynthesizer"])
     ],
     dependencies: [
-        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.2.1")
+        .package(url: "https://github.com/StanfordSpezi/Spezi", from: "1.8.0")
     ] + swiftLintPackage(),
     targets: [
         .target(
             name: "SpeziSpeechRecognizer",
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
-            ],
-            swiftSettings: [
-                strictConcurrency
             ],
             plugins: [] + swiftLintPlugin()
         ),
@@ -49,9 +40,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Spezi", package: "Spezi")
             ],
-            swiftSettings: [
-                strictConcurrency
-            ],
             plugins: [] + swiftLintPlugin()
         ),
         .testTarget(
@@ -59,9 +47,6 @@ let package = Package(
             dependencies: [
                 .target(name: "SpeziSpeechRecognizer"),
                 .target(name: "SpeziSpeechSynthesizer")
-            ],
-            swiftSettings: [
-                strictConcurrency
             ],
             plugins: [] + swiftLintPlugin()
         )
